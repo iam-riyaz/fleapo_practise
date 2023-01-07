@@ -69,24 +69,7 @@ export const SearchPage2 = () => {
         );
       })}
 
-{/* second input
-<input type="text" onChange={(e) => setQuery(e.target.value)} />
-      <div>
-        <select onChange={handleChange} name="" id="">
-          <option value="asce">a-z</option>
-          <option value="desc">z-a</option>
-        </select>
-      </div>
-      {data.map((e, i) => {
-        return (
-          <div>
-          <div key={i + 1}>
-            <img src={e.Poster} alt="" />
-            <p2>{e.Title}</p2>
-          </div>
-          </div>
-        );
-      })} */}
+
 
 
     </>
