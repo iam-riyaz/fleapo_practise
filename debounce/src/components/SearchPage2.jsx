@@ -69,7 +69,7 @@ export const SearchPage2 = () => {
         );
       })}
 
-{/* second input */}
+{/* second input
 <input type="text" onChange={(e) => setQuery(e.target.value)} />
       <div>
         <select onChange={handleChange} name="" id="">
@@ -86,7 +86,7 @@ export const SearchPage2 = () => {
           </div>
           </div>
         );
-      })}
+      })} */}
 
 
     </>
