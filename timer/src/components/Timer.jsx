@@ -5,17 +5,21 @@ export const Timer = () => {
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [customBtn,setCustomBtn] = useState("Start")
   const timerRef = useRef();
 
   const timerStart = () => {
     setIsActive(true);
+    setCustomBtn("Stop")
   };
   const timerStop = () => {
     setIsActive(false);
+    setCustomBtn("Start")
   };
 
   const timerReset = () => {
     setIsActive(false);
+    setCustomBtn("Start")
     setSeconds(0);
     setHours(0);
     setMinutes(0);
@@ -45,8 +49,8 @@ export const Timer = () => {
         {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}:
         {String(seconds).padStart(2, "0")}
       </p>
-      <button onClick={timerStart}>Start</button>
-      <button onClick={timerStop}>Stop</button>
+      <button onClick={!isActive?timerStart:timerStop}>{customBtn}</button>
+      
       <button onClick={timerReset}>Reset</button>
     </>
   );
