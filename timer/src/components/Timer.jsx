@@ -1,48 +1,65 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useState, useEffect, useRef } from 'react';
+
+export const Timer = () => {
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const timerRef= useRef()
+  const [isActive,setIsActive]= useState(false)
 
 
-export const Timer=()=>{
+  const timerStart=()=>{
+    setIsActive(true)
+  }
+  const timerStop=()=>{
+    setIsActive(false)
+  }
 
-    const [seconds, setSeconds]= useState(0);
-    const [isActive,setIsActive]= useState(false);
-    const intervalRef= useRef()
+  const timerReset=()=>{
+    setIsActive(false)
+    setSeconds(0)
+    setMinutes(0)
+    setHours(0)
+  }
 
-    const startTimer= ()=>{
-        setIsActive(true)
-    }
-    const stopTimer= ()=>{
-        setIsActive(false)
-    }
+  useEffect(() => {
 
-    const resetTimer=()=>{
-        setIsActive(false)
-        setSeconds(0)
-    }
+if(isActive){
 
-    useEffect(()=>{
-       
-        if(isActive){
-            intervalRef.current= setInterval(()=>{
-                setSeconds((pre)=>pre+1)
-            },1000)
-        }
-        else{
-            clearInterval(intervalRef.current)
-        }
-
-
-        return ()=> clearInterval(intervalRef.current)
-    },[isActive])
-
-
-    return(
-        <>
-        <div>
-        <p>Timer: {seconds} seconds</p>
-      <button onClick={startTimer}>Start</button>
-      <button onClick={stopTimer}>Stop</button>
-      <button onClick={resetTimer}>Reset</button>
-        </div>
-        </>
-    )
+    timerRef.current = setInterval(() => {
+      // Update seconds
+      setSeconds((prevSeconds) => (prevSeconds + 1) % 60);
+    
+      // Update minutes
+      if (seconds === 59) {
+        setMinutes((prevMinutes) => (prevMinutes + 1) % 60);
+      }
+    
+      // Update hours
+      if (minutes === 59 && seconds === 59) {
+        setHours((prevHours) => prevHours + 1);
+      }
+    }, 1000);
 }
+else{
+    clearInterval(timerRef.current)
+}
+
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(timerRef.current);
+  }, [isActive]);
+
+  return (
+    <div>
+      <p id='timer'>{String(hours).padStart(2, '0')}:{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</p>
+      <div>
+        <button onClick={timerStart}>start</button>
+        <button onClick={timerStop}>stop</button>
+        <button onClick={timerReset}>reset</button>
+      </div>
+    </div>
+  );
+};
+
+
