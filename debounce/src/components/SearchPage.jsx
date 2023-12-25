@@ -35,21 +35,7 @@ export const SearchPage = () => {
     }, 1000);
   };
 
-//   const onSort=(e)=>{
-//     if(e.target.value=="aesc")
-//     {
-//         let mydata=data.sort((a,b)=>{a.Title-b.Title})
-//         setData(mydata)
-//         console.log(mydata)
-        
-//     }
-//     if(e.target.value=="desc")
-//     {
-//         let mydata=data.sort((a,b)=>b.Title-a.Title)
-//         setData(mydata)
-//         console.log(mydata)
-//     }
-// }
+
 
   useEffect(() => {
     if (search.length >= 3) {
@@ -70,11 +56,7 @@ export const SearchPage = () => {
             type="text"
             placeholder="search"
           />
-         {/* <select style={{ marginLeft:"50px", height: "30px", fontSize: "20px" }} onChange={onSort} name="sort" id="">
-            <option value="">sort</option>
-            <option value="aesc">sort by A-Z</option>
-            <option value="desc">sort by Z-A</option>
-         </select> */}
+         
         </div>
 
         {isloading ? (
