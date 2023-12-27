@@ -29,9 +29,8 @@ export const SearchPage2 = () => {
         let bData = b.Title.toUpperCase();
         return aData.localeCompare(bData);
       });
-      console.log({data,sortedData})
+      console.log({ data, sortedData });
       setData(sortedData);
-
     }
     if (e.target.value == "desc") {
       let sortedData = [...data].sort((a, b) => {
@@ -39,13 +38,12 @@ export const SearchPage2 = () => {
         let bData = b.Title.toUpperCase();
         return bData.localeCompare(aData);
       });
-      console.log({data,sortedData})
+      console.log({ data, sortedData });
       setData(sortedData);
     }
   };
 
   useEffect(() => {
-    
     debounce(getData, 1000);
 
     return () => clearInterval(debouceRef.current);
@@ -60,9 +58,9 @@ export const SearchPage2 = () => {
           <option value="desc">z-a</option>
         </select>
       </div>
-      {data.map((e,i) => {
+      {data.map((e, i) => {
         return (
-          <div key={i+1}>
+          <div key={i + 1}>
             <img src={e.Poster} alt="" />
             <p2>{e.Title}</p2>
           </div>
