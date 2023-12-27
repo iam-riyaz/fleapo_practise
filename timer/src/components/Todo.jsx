@@ -16,7 +16,7 @@ export const Todo = () => {
         arr.push(todoList[i]);
       }
     }
-    setTodoList(arr)
+    setTodoList(arr);
   };
 
   return (
