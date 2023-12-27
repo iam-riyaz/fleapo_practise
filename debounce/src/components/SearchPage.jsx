@@ -35,8 +35,6 @@ export const SearchPage = () => {
     }, 1000);
   };
 
-
-
   useEffect(() => {
     if (search.length >= 3) {
       debounce();
@@ -56,31 +54,34 @@ export const SearchPage = () => {
             type="text"
             placeholder="search"
           />
-         
         </div>
 
         {isloading ? (
           <p>laoding</p>
         ) : (
           <div>
-            {data.length!=0?<div>
-              {data.map((e) => {
-                return (
-                  <>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        height: "100px",
-                      }}
-                    >
-                      <img style={{ height: "100%" }} src={e.Poster} alt="" />
-                      <span>{e.Title}</span>
-                    </div>
-                  </>
-                );
-              })}
-            </div>:<p>no data found</p>}
+            {data.length != 0 ? (
+              <div>
+                {data.map((e) => {
+                  return (
+                    <>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          height: "100px",
+                        }}
+                      >
+                        <img style={{ height: "100%" }} src={e.Poster} alt="" />
+                        <span>{e.Title}</span>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              <p>no data found</p>
+            )}
           </div>
         )}
       </div>
