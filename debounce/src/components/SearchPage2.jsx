@@ -60,9 +60,11 @@ export const SearchPage2 = () => {
       </div>
       {data.map((e, i) => {
         return (
+          <div>
           <div key={i + 1}>
             <img src={e.Poster} alt="" />
             <p2>{e.Title}</p2>
+          </div>
           </div>
         );
       })}
